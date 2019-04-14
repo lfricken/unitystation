@@ -16,5 +16,24 @@ class PostBuildActions : IPostprocessBuildWithReport
     {
         //Reload the scene after building to refresh it
         AssetDatabase.SaveAssets();
+        CheckBuildTools();
+    }
+
+    /// <summary>
+    /// Was build initiated via build tools?
+    /// </summary>
+    void CheckBuildTools()
+    {
+        if (PlayerPrefs.HasKey("buildprocess_01"))
+        {
+            int setting = PlayerPrefs.GetInt("buildprocess_01");
+            Debug.Log("SETTING: " + setting);
+            switch (setting)
+            {
+                case 1:
+                    BuildingTools.PerformClientBuildForHeadless();
+                    break;
+            }
+        }
     }
 }
