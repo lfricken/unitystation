@@ -203,7 +203,7 @@ public class HealthStateMonitor : ManagedNetworkBehaviour
 
 	void SendOverallUpdate()
 	{
-		HealthOverallMessage.SendToAll(gameObject, livingHealthBehaviour.OverallHealth,
+		HealthOverallMessage.SendToAll(gameObject, (int)livingHealthBehaviour.OverallHealth,
 			livingHealthBehaviour.ConsciousState, livingHealthBehaviour.PressureStatus,
 			livingHealthBehaviour.TempStatus);
 	}
@@ -235,7 +235,7 @@ public class HealthStateMonitor : ManagedNetworkBehaviour
 
 	void SendOverallUpdate(GameObject requestor)
 	{
-		HealthOverallMessage.Send(requestor, gameObject, livingHealthBehaviour.OverallHealth,
+		HealthOverallMessage.Send(requestor, gameObject, (int)livingHealthBehaviour.OverallHealth,
 			livingHealthBehaviour.ConsciousState, livingHealthBehaviour.PressureStatus, livingHealthBehaviour.TempStatus);
 	}
 

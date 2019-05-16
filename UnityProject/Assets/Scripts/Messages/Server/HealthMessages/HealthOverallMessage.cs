@@ -17,7 +17,7 @@ public class HealthOverallMessage : ServerMessage
 	public override IEnumerator Process()
 	{
 		yield return WaitFor(EntityToUpdate);
-		NetworkObject.GetComponent<LivingHealthBehaviour>().UpdateClientHealthStats(OverallHealth, ConsciousState);
+		NetworkObject.GetComponent<LivingHealthBehaviour>().UpdateClientHealthStats(OverallHealth);
 		NetworkObject.GetComponent<LivingHealthBehaviour>().UpdateClientGauges(PressureStatus, TempStatus);
 	}
 
@@ -27,7 +27,6 @@ public class HealthOverallMessage : ServerMessage
 		{
 			EntityToUpdate = entityToUpdate.GetComponent<NetworkIdentity>().netId,
 				OverallHealth = overallHealth,
-				ConsciousState = consciousState,
 				PressureStatus = pressureStatus,
 				TempStatus = tempStatus,
 		};
@@ -41,7 +40,6 @@ public class HealthOverallMessage : ServerMessage
 		{
 			EntityToUpdate = entityToUpdate.GetComponent<NetworkIdentity>().netId,
 				OverallHealth = overallHealth,
-				ConsciousState = consciousState,
 				PressureStatus = pressureStatus,
 				TempStatus = tempStatus,
 		};
